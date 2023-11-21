@@ -1,6 +1,12 @@
 import os
 
 # This function gets the current directory, searches for text files and then for strings within these text files.
+def start_application(current):
+    string = input("Skriv sökordet: ")
+    print(f"Sök ordet är {string}. Nu börjar vi")
+    press_to_continue = input("Tryck på valfri knapp för att fortsätta.")
+
+    search_for(string=string, current=current)
 
 def search_for(string: str, current):
 
@@ -31,17 +37,20 @@ def search_for(string: str, current):
                         for index, line in enumerate(f):
                             # Search string
                             if string in line:
-                                print('String found in the file')
+                                print(f'Ordet hittades i filen som ligger i {absolute_path}.')
                                 # Stop looking for next lines
                                 break
                         else:
                             # This else clause is executed if the for loop completes without a 'break'
-                            print('String does not exist in the file')
+                            pass
                 except FileNotFoundError:
-                    print(f"The file {content} was not found.")
+                    print(f"Filen {content} kunde inte hittas.")
                 except Exception as e:
-                    print(f"An error occurred: {e}")
+                    print(f"Ett fel hände: {e}")
 
 
 current_directory = os.path.dirname(os.path.realpath(__file__))
-search_for("Koffein", current_directory)
+
+start_application(current=current_directory)
+
+# search_for("Koffein", current_directory)
