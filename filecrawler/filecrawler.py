@@ -44,13 +44,11 @@ def search_for(string: str, current):
                             # This else clause is executed if the for loop completes without a 'break'
                             pass
                 except FileNotFoundError:
-                    print(f"Filen {content} kunde inte hittas.")
+                    print(f"Filen {content} kunde inte hittas i {absolute_path}.")
                 except Exception as e:
-                    print(f"Ett fel hände: {e}")
+                    print(f"Ett fel hände i {absolute_path}: {e}")
 
 
 current_directory = os.path.dirname(os.path.realpath(__file__))
 
 start_application(current=current_directory)
-
-# search_for("Koffein", current_directory)
